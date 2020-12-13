@@ -4,7 +4,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: jenkins
-  namespace: default
+  namespace: edamr
   labels:
     "app.kubernetes.io/name": 'jenkins'
     "helm.sh/chart": "jenkins-3.0.7"
@@ -17,7 +17,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: jenkins
-  namespace: default
+  namespace: edamr
   labels:
     "app.kubernetes.io/name": 'jenkins'
     "helm.sh/chart": "jenkins-3.0.7"
@@ -34,7 +34,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: jenkins
-  namespace: default
+  namespace: edamr
   labels:
     "app.kubernetes.io/name": 'jenkins'
     "app.kubernetes.io/managed-by": "Helm"
@@ -72,7 +72,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: jenkins-jenkins-jcasc-config
-  namespace: default
+  namespace: edamr
   labels:
     "app.kubernetes.io/name": jenkins
     "helm.sh/chart": "jenkins-3.0.7"
@@ -164,7 +164,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: jenkins
-  namespace: default
+  namespace: edamr
   labels:
     "app.kubernetes.io/name": 'jenkins'
     "helm.sh/chart": "jenkins-3.0.7"
@@ -184,7 +184,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: jenkins-schedule-agents
-  namespace: default
+  namespace: edamr
   labels:
     "app.kubernetes.io/name": 'jenkins'
     "helm.sh/chart": "jenkins-3.0.7"
@@ -206,7 +206,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: jenkins-casc-reload
-  namespace: default
+  namespace: edamr
   labels:
     "app.kubernetes.io/name": 'jenkins'
     "helm.sh/chart": "jenkins-3.0.7"
@@ -225,7 +225,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: jenkins-schedule-agents
-  namespace: default
+  namespace: edamr
   labels:
     "app.kubernetes.io/name": 'jenkins'
     "helm.sh/chart": "jenkins-3.0.7"
@@ -239,14 +239,14 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: jenkins
-  namespace: default
+  namespace: edamr
 ---
 # Source: jenkins/templates/rbac.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: jenkins-watch-configmaps
-  namespace: default
+  namespace: edamr
   labels:
     "app.kubernetes.io/name": 'jenkins'
     "helm.sh/chart": "jenkins-3.0.7"
@@ -260,14 +260,14 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: jenkins
-  namespace: default
+  namespace: edamr
 ---
 # Source: jenkins/templates/jenkins-agent-svc.yaml
 apiVersion: v1
 kind: Service
 metadata:
   name: jenkins-agent
-  namespace: default
+  namespace: edamr
   labels:
     "app.kubernetes.io/name": 'jenkins'
     "helm.sh/chart": "jenkins-3.0.7"
@@ -289,7 +289,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: jenkins
-  namespace: default
+  namespace: edamr
   labels:
     "app.kubernetes.io/name": 'jenkins'
     "helm.sh/chart": "jenkins-3.0.7"
@@ -311,7 +311,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: jenkins
-  namespace: default
+  namespace: edamr
   labels:
     "app.kubernetes.io/name": 'jenkins'
     "helm.sh/chart": "jenkins-3.0.7"

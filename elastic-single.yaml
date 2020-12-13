@@ -1,0 +1,167 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubernetes.io/psp: eks.privileged
+  creationTimestamp: "2020-12-13T03:54:49Z"
+  labels:
+    run: elasticsearch
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:run: {}
+      f:spec:
+        f:containers:
+          k:{"name":"elasticsearch"}:
+            .: {}
+            f:env:
+              .: {}
+              k:{"name":"discovery.type"}:
+                .: {}
+                f:name: {}
+                f:value: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:ports:
+              .: {}
+              k:{"containerPort":9200,"protocol":"TCP"}:
+                .: {}
+                f:containerPort: {}
+                f:protocol: {}
+            f:resources: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+        f:dnsPolicy: {}
+        f:enableServiceLinks: {}
+        f:restartPolicy: {}
+        f:schedulerName: {}
+        f:securityContext: {}
+        f:terminationGracePeriodSeconds: {}
+    manager: kubectl-run
+    operation: Update
+    time: "2020-12-13T03:54:49Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:conditions:
+          k:{"type":"ContainersReady"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Initialized"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Ready"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+        f:containerStatuses: {}
+        f:hostIP: {}
+        f:phase: {}
+        f:podIP: {}
+        f:podIPs:
+          .: {}
+          k:{"ip":"192.168.23.82"}:
+            .: {}
+            f:ip: {}
+        f:startTime: {}
+    manager: kubelet
+    operation: Update
+    time: "2020-12-13T03:55:12Z"
+  name: elasticsearch
+  namespace: default
+  resourceVersion: "486955"
+  selfLink: /api/v1/namespaces/default/pods/elasticsearch
+  uid: 43fcb36c-5a00-4707-91de-a125b57d9954
+spec:
+  containers:
+  - env:
+    - name: discovery.type
+      value: single-node
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.2.1
+    imagePullPolicy: IfNotPresent
+    name: elasticsearch
+    ports:
+    - containerPort: 9200
+      protocol: TCP
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-w86ft
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: ip-192-168-22-218.ap-south-1.compute.internal
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: default-token-w86ft
+    secret:
+      defaultMode: 420
+      secretName: default-token-w86ft
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2020-12-13T03:54:49Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2020-12-13T03:55:12Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2020-12-13T03:55:12Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2020-12-13T03:54:49Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://7d88ad167d84312aac6857422917dd625c2d0284d57a4dcd21c1e23738c23f42
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.2.1
+    imageID: docker-pullable://docker.elastic.co/elasticsearch/elasticsearch@sha256:cc5fe435b81c0b586363ca33573e802a060468ae93a6cb4702caa1e336f4d1c3
+    lastState: {}
+    name: elasticsearch
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2020-12-13T03:55:11Z"
+  hostIP: 192.168.22.218
+  phase: Running
+  podIP: 192.168.23.82
+  podIPs:
+  - ip: 192.168.23.82
+  qosClass: BestEffort
+  startTime: "2020-12-13T03:54:49Z"
